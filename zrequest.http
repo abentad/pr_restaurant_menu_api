@@ -1,0 +1,22 @@
+###
+POST http://localhost:3000/api/restaurants
+Content-Type: application/json
+
+{
+    "restaurant_name": "bilos",
+    "restaurant_image": "http://cloudinary.com/bilos"
+}
+
+###
+PATCH http://localhost:3000/api/restaurants
+Content-Type: application/json
+
+{
+    "restaurant_id": "2",
+    "restaurant_name": "Bilos",
+    "restaurant_image": "http://cloudinary.com/bilos"
+}
+
+###
+DELETE http://localhost:3000/api/restaurants/2
+
