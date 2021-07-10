@@ -1,9 +1,14 @@
-const router = require('express').Router();
-const {addFood, getFoodListByRestaurantId,removeFoodByFoodId} = require('../controller/menu_controller');
+const router = require("express").Router();
+const {
+  addFood,
+  getFoodListByRestaurantId,
+  removeFoodByFoodId,
+} = require("../controller/menu_controller");
 
-router.post("/",addFood);
+const upload = require("../config/multer_config");
+
+router.post("/", upload.single("image"), addFood);
 router.get("/:id", getFoodListByRestaurantId);
-router.delete("/:id",removeFoodByFoodId);
+router.delete("/:id", removeFoodByFoodId);
 
 module.exports = router;
-

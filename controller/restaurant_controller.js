@@ -1,60 +1,84 @@
-const {createRestaurant, receiveRestaurants,requestRestaurantById, updateRestaurantInfo, deleteRestaurantInfo} = require('../services/restaurant_services');
+const {
+  createRestaurant,
+  receiveRestaurants,
+  requestRestaurantById,
+  updateRestaurantInfo,
+  deleteRestaurantInfo,
+} = require("../services/restaurant_services");
+
+const cloudinary = require("../config/cloudinary_config");
 
 module.exports = {
-    addRestaurant:(req,res) =>{
-        const body = req.body;
-        createRestaurant(body,(error,results)=>{
-            if(error){
-                console.log(error.message);
-                res.json({message: `failed to insert restaurant because\n${error.message}`});
-            }else{
-                res.json({results});
-            }
+  addRestaurant: async (req, res) => {
+    const result = await cloudinary.uploader.upload(req.file.path);
+    const newImageUrl = result.secure_url.replace(
+      /v[0-9]+/,
+      "c_scale,h_450,w_700"
+    );
+    console.log(result);
+    const body = req.body;
+    createRestaurant(body, newImageUrl, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        res.json({
+          message: `failed to insert restaurant because\n${error.message}`,
         });
-    },
-    getRestaurants:(req,res)=>{
-        receiveRestaurants((error,results)=>{
-            if(error){
-                console.log(error.message);
-                res.json({message: `failed to get restaurants because\n${error.message}`});
-            }else{
-                res.json({results});
-            }
+      } else {
+        res.json({ results });
+      }
+    });
+  },
+  getRestaurants: (req, res) => {
+    receiveRestaurants((error, results) => {
+      if (error) {
+        console.log(error.message);
+        res.json({
+          message: `failed to get restaurants because\n${error.message}`,
         });
-    },
-    getRestaurantById:(req,res)=>{
-        const id = req.params.id;
-        requestRestaurantById(id,(error,results)=>{
-            if(error){
-                console.log(error.message);
-                res.json({message: `failed to get restaurant by id\n${error.message}`});
-            }else{
-                res.json({results});
-            }
+      } else {
+        res.json({ results });
+      }
+    });
+  },
+  getRestaurantById: (req, res) => {
+    const id = req.params.id;
+    requestRestaurantById(id, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        res.json({
+          message: `failed to get restaurant by id\n${error.message}`,
         });
-    },
-    updateRestaurant:(req,res)=>{
-        const body = req.body;
-        updateRestaurantInfo(body,(error,results)=>{
-            if(error){
-                console.log(error.message);
-                res.json({message: `failed to update restaurant info because\n${error.message}`});
-                return;
-            }else{
-                res.json({message: "restaurant updated succesfully"});
-            }
+      } else {
+        res.json({ results });
+      }
+    });
+  },
+  updateRestaurant: (req, res) => {
+    const body = req.body;
+    updateRestaurantInfo(body, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        res.json({
+          message: `failed to update restaurant info because\n${error.message}`,
         });
-    },
-    deleteRestaurant:(req,res)=>{
-        const id = req.params.id;
-        deleteRestaurantInfo(id,(error,results)=>{
-            if(error){
-                console.log(error.message);
-                res.json({message: `failed to remove restaurant info because\n${error.message}`});
-                return;
-            }else{
-                res.json({message: "restaurant removed succesfully"});
-            }
+        return;
+      } else {
+        res.json({ message: "restaurant updated succesfully" });
+      }
+    });
+  },
+  deleteRestaurant: (req, res) => {
+    const id = req.params.id;
+    deleteRestaurantInfo(id, (error, results) => {
+      if (error) {
+        console.log(error.message);
+        res.json({
+          message: `failed to remove restaurant info because\n${error.message}`,
         });
-    }
-}
+        return;
+      } else {
+        res.json({ message: "restaurant removed succesfully" });
+      }
+    });
+  },
+};
