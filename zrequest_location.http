@@ -1,0 +1,19 @@
+# adding location, 
+# getting a list of locations by restaurant id,
+# removing a location by its location_id
+
+###
+POST http://localhost:3000/api/restaurant-location HTTP/1.1
+Content-Type: application/json
+
+{
+    "location_address": "ayerTena",
+    "can_serve_inside_car": "0",
+    "restaurant_id": "1"
+}
+
+###
+GET http://localhost:3000/api/restaurant-location/3 HTTP/1.1
+
+###
+DELETE http://localhost:3000/api/restaurant-location/4 HTTP/1.1

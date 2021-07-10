@@ -1,7 +1,6 @@
 const express = require('express');
 const pool = require('../config/database');
 
-
 const restaurantTable = "restaurant";
 
 module.exports = {
