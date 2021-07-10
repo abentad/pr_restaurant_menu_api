@@ -1,0 +1,18 @@
+###
+POST http://localhost:3000/api/restaurant-menu HTTP/1.1
+Content-Type: application/json
+
+{
+    "food_name": "White forest cake",
+    "food_description": "milk, flour, sugar",
+    "food_price": "40",
+    "food_rating": "4.5",
+    "food_image": "http://cloudinary/bilos/white_forest_cake",
+    "restaurant_id": "3"
+}
+
+###
+GET http://localhost:3000/api/restaurant-menu/1
+
+###
+DELETE http://localhost:3000/api/restaurant-menu/4
