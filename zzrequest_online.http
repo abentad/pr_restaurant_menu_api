@@ -1,0 +1,81 @@
+###
+GET https://food-menu.rentoch.com
+
+# ========================================================================================================
+# RESTAURANT
+#adding a restaurant
+#getting a list of restaurants
+#update a restaurant by its restaurant_id
+#deleting a restaurant by its restaurant_id
+
+###
+POST https://food-menu.rentoch.com/api/restaurants
+Content-Type: application/json
+
+{
+    "restaurant_name": "angla",
+    "restaurant_image": "http://cloudinary.com/angla"
+}
+
+###
+GET https://food-menu.rentoch.com/api/restaurants
+
+###
+PATCH https://food-menu.rentoch.com/api/restaurants
+Content-Type: application/json
+
+{
+    "restaurant_id": "2",
+    "restaurant_name": "Bilos",
+    "restaurant_image": "http://cloudinary.com/bilos"
+}
+
+###
+DELETE https://food-menu.rentoch.com/api/restaurants/2
+
+# =========================================================================================================
+# LOCATION
+# adding location, 
+# getting a list of locations by restaurant id,
+# removing a location by its location_id
+
+###
+POST https://food-menu.rentoch.com/api/restaurant-location HTTP/1.1
+Content-Type: application/json
+
+{
+    "location_address": "Bole next to friend ship",
+    "can_serve_inside_car": "1",
+    "restaurant_id": "2"
+}
+
+###
+GET https://food-menu.rentoch.com/api/restaurant-location/2 HTTP/1.1
+
+###
+DELETE https://food-menu.rentoch.com/api/restaurant-location/4 HTTP/1.1
+
+# =========================================================================================================
+# FOOD
+#adding food 
+#getting food list by restaurant_id
+#delete food by its food_id
+
+###
+POST https://food-menu.rentoch.com/api/restaurant-menu HTTP/1.1
+Content-Type: application/json
+
+{
+    "food_name": "Special tea",
+    "food_description": "Tea with honey, lemon and alcohol",
+    "food_price": "70",
+    "food_rating": "4.5",
+    "food_image": "http://cloudinary.com/bilos/special_tea",
+    "restaurant_id": "1"
+}
+
+###
+GET https://food-menu.rentoch.com/api/restaurant-menu/2
+
+###
+DELETE https://food-menu.rentoch.com/api/restaurant-menu/4

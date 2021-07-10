@@ -3,9 +3,9 @@ const {createPool} = require('mysql');
 const pool = createPool({
     port: 3306,
     host: "localhost",
-    user: "root",
-    password: "",
-    database: "restaurants",
+    user: "rentochcom_food_menu_ab",
+    password: "HjJIUWE+RUZJ",
+    database: "rentochcom_food_menu",
     connectTimeout: 10
 });
 
