@@ -8,7 +8,7 @@ const pool = createPool({
   database: "rentochcom_food_menu",
   connectTimeout: 10,
 });
-//for local
+// for local
 // const pool = createPool({
 //   port: 3306,
 //   host: "localhost",

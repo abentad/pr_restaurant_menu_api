@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE https://food-menu.rentoch.com/api/restaurants/2
+DELETE https://food-menu.rentoch.com/api/restaurants/1
 
 # =========================================================================================================
 # LOCATION
@@ -50,10 +50,10 @@ Content-Type: application/json
 }
 
 ###
-GET https://food-menu.rentoch.com/api/restaurant-location/2 HTTP/1.1
+GET https://food-menu.rentoch.com/api/restaurant-location/1 HTTP/1.1
 
 ###
-DELETE https://food-menu.rentoch.com/api/restaurant-location/4 HTTP/1.1
+DELETE https://food-menu.rentoch.com/api/restaurant-location/1 HTTP/1.1
 
 # =========================================================================================================
 # FOOD
@@ -75,7 +75,7 @@ Content-Type: application/json
 }
 
 ###
-GET https://food-menu.rentoch.com/api/restaurant-menu/2
+GET https://food-menu.rentoch.com/api/restaurant-menu/1
 
 ###
 DELETE https://food-menu.rentoch.com/api/restaurant-menu/4
