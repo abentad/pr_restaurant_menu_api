@@ -55,6 +55,9 @@ module.exports = {
       });
     }
   },
+  getRestaurantImage: (req, res) => {
+    res.download("./controller/uploads/" + req.params.imagename);
+  },
   getRestaurants: (req, res) => {
     receiveRestaurants((error, results) => {
       if (error) {
